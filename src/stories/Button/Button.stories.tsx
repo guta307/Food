@@ -2,7 +2,7 @@ import { View } from "react-native";
 import type { Meta, StoryObj } from "@storybook/react";
 import { MyButton, ButtonProps } from "./Button";
 import React from "react";
-import ThemeDecorator from "../../decorator/ThemeDecorator";
+import ThemeDecorator from "../../../.storybook/decorator/ThemeDecorator";
 
 const MyButtonMeta: Meta<ButtonProps> = {
   title: "MyButton",
@@ -26,7 +26,7 @@ const MyButtonMeta: Meta<ButtonProps> = {
     },
     type: {
       control: "radio",
-      options: ["standard", "action"],
+      options: ["standard", "action", "login"],
       defaultValue: "standard",
       description: "Type of the component",
     },

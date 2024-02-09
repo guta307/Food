@@ -1,5 +1,7 @@
 import { extendTheme } from "native-base";
 
+import { WidthScreen } from "../utils/Screensize";
+
 export const Themes = extendTheme({
   colors: {
     orange: {
@@ -24,20 +26,27 @@ export const Themes = extendTheme({
     gray: {
       200: "#EBEBEB",
       500: "#C4C7D0",
+      700: "#5B5B5E",
       800: "#A8ACB9",
       900: "#9A9FAE",
+    },
+    blue: {
+      900: "#30384F",
     },
     white: "#fff",
   },
   fontSizes: {
-    xs: 12,
-    sm: 15,
-    md: 16,
-    lg: 18,
-    xl: 24,
-    "2xl": 30,
-    "3xl": 36,
+    xs: WidthScreen * 0.032, //12
+    sm: WidthScreen * 0.04, //15
+    md: WidthScreen * 0.0427, //16
+    lg: WidthScreen * 0.048, //18
+    xl: WidthScreen * 0.064, //24
+    "2xl": WidthScreen * 0.08, //30
+    "3xl": WidthScreen * 0.096, //36
+    xxl: WidthScreen * 0.167, //40
+    "2xxl": WidthScreen * 0.12, //45
   },
+  fontWeights: {},
   shadows: {
     0: {
       shadowColor: "#7A81BE",

@@ -2,7 +2,7 @@ import { View } from "react-native";
 import type { Meta, StoryObj } from "@storybook/react";
 import { InputField, inputProps } from "./Input";
 import React from "react";
-import ThemeDecorator from "../../decorator/ThemeDecorator";
+import ThemeDecorator from "../../../.storybook/decorator/ThemeDecorator";
 
 const MyInputMeta: Meta<inputProps> = {
   title: "Input",
