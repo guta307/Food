@@ -1,11 +1,9 @@
-import { ButtonProps } from "./Button";
-
 export const ButtonStyle = (type: string) => {
   switch (type) {
     case "standard":
       return {
         textColor: "black.100",
-        bgColor: "white",
+        bgColor: "#FFFFFF",
         borderWidth: "0",
         borderColor: "white",
       };

@@ -1,6 +1,6 @@
 import { extendTheme } from "native-base";
 
-import { WidthScreen } from "../utils/Screensize";
+import { HeightScreen, WidthScreen } from "../utils/Screensize";
 
 export const Themes = extendTheme({
   colors: {
@@ -50,19 +50,25 @@ export const Themes = extendTheme({
   shadows: {
     0: {
       shadowColor: "#7A81BE",
-      shadowOffset: { width: 0, height: 10 },
+      shadowOffset: { width: 0, height: HeightScreen * 0.0123 },
       shadowOpacity: 0.16,
       shadowRadius: 40,
     },
     1: {
       shadowColor: "#D3D1D8",
-      shadowOffset: { width: 18.587, height: 18.587 },
+      shadowOffset: {
+        width: WidthScreen * 0.0496,
+        height: HeightScreen * 0.0229,
+      },
       shadowOpacity: 0.25,
       shadowRadius: 37.174,
     },
     2: {
       shadowColor: "#E9E9E9",
-      shadowOffset: { width: 15, height: 20 },
+      shadowOffset: {
+        width: WidthScreen * 0.04,
+        height: HeightScreen * 0.0246,
+      },
       shadowOpacity: 0.25,
       shadowRadius: 45,
     },
@@ -74,13 +80,16 @@ export const Themes = extendTheme({
     },
     4: {
       shadowColor: "#D3D1D8",
-      shadowOffset: { width: 0, height: 18 },
+      shadowOffset: { width: 0, height: HeightScreen * 0.0222 },
       shadowOpacity: 0.25,
       shadowRadius: 40,
     },
     5: {
       shadowColor: "#D3D1D8",
-      shadowOffset: { width: 15, height: 15 },
+      shadowOffset: {
+        width: WidthScreen * 0.04,
+        height: HeightScreen * 0.0246,
+      },
       shadowOpacity: 0.25,
       shadowRadius: 30,
     },

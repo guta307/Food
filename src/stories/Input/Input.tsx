@@ -1,22 +1,28 @@
-import { Box, FormControl, Image, Input } from "native-base";
-import React, { useState } from "react";
+import { Box, FormControl, Input, IFormControlProps } from "native-base";
+import React, { useEffect, useState } from "react";
 import EyeOpen from "../../../src/assets/Images/components/Inputs/eyeOpen.svg";
 import EyeClosed from "../../../src/assets/Images/components/Inputs/EyeClosed.svg";
 
+import { HeightScreen, WidthScreen } from "../../utils/Screensize";
 export type inputProps = {
   type?: "text" | "password";
   placeholder?: string;
   label?: string;
-};
+  onChange?: (text: string) => void;
+  errorMessage?: string; // Adicionado
+} & IFormControlProps;
 
 export const InputField = ({
   type = "text",
   placeholder = "",
   label,
+  onChange = () => {},
+  errorMessage,
+  ...rest
 }: inputProps) => {
   const [Show, setShow] = useState(false);
   const [InputType, setInputType] = useState(type);
-
+  const [Error, setError] = useState(errorMessage);
   const passowordInteraction = () => {
     setInputType(() => {
       return !Show === false ? "password" : "text";
@@ -24,15 +30,31 @@ export const InputField = ({
     setShow(!Show);
   };
 
+  useEffect(() => {
+    setError(errorMessage);
+  }, [errorMessage]);
   return (
     <>
-      <FormControl mt={3} flexDir={"column"} width={"325px"}>
-        {label && <FormControl.Label>{label}</FormControl.Label>}
+      <FormControl
+        {...rest}
+        flexDir={"column"}
+        width={WidthScreen * 0.8667}
+        isInvalid={!!errorMessage}
+      >
+        {label && (
+          <FormControl.Label mb={HeightScreen * 0.0148}>
+            {label}
+          </FormControl.Label>
+        )}
 
         <Input
+          onChangeText={(value) => onChange(value)}
+          onFocus={() => {
+            Error && setError(null);
+          }}
           shadow="2"
           width={"100%"}
-          height={"65px"}
+          height={HeightScreen * 0.08}
           rounded={"10px"}
           placeholder={placeholder}
           borderColor={"#EEE"}
@@ -52,14 +74,14 @@ export const InputField = ({
                 {!Show ? (
                   <EyeOpen
                     onTouchStart={passowordInteraction}
-                    width="17"
-                    height="12"
+                    width={WidthScreen * 0.0453}
+                    height={HeightScreen * 0.0148}
                   />
                 ) : (
                   <EyeClosed
                     onTouchStart={passowordInteraction}
-                    width="17"
-                    height="12"
+                    width={WidthScreen * 0.0453}
+                    height={HeightScreen * 0.0148}
                   />
                 )}
               </Box>
@@ -70,6 +92,7 @@ export const InputField = ({
           fontSize={"17px"}
           type={InputType}
         />
+        {Error && <FormControl.ErrorMessage>{Error}</FormControl.ErrorMessage>}
       </FormControl>
     </>
   );

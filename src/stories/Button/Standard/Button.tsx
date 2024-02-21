@@ -1,27 +1,10 @@
-import React, { ReactNode } from "react";
-import { Button, Center, IButtonProps, Image, Text, View } from "native-base";
+import React from "react";
+import { Button, Text, View } from "native-base";
 import { ButtonStyle } from "./Button.style";
 
-import { WidthScreen, HeightScreen } from "../../utils/Screensize";
+import { WidthScreen, HeightScreen } from "../../../utils/Screensize";
 
-export type ButtonProps = {
-  children: ReactNode;
-  shadow?: "0" | "1" | "2" | "3" | "4" | "5" | null;
-  type?: "standard" | "action" | "login";
-  Img?: React.ElementType; // Definindo url como um SvgProps para lidar com SVG
-  FontWeight?:
-    | "bold"
-    | "100"
-    | "200"
-    | "300"
-    | "400"
-    | "500"
-    | "600"
-    | "700"
-    | "800"
-    | "900"
-    | "normal";
-} & IButtonProps;
+import { ButtonProps } from "../type";
 
 export const MyButton = ({
   children,
@@ -29,7 +12,7 @@ export const MyButton = ({
   shadow = "5",
   width = 180,
   Img,
-  FontWeight,
+  FontWeight = "400",
   fontFamily,
   ...rest
 }: ButtonProps) => {
@@ -61,7 +44,7 @@ export const MyButton = ({
         <Text
           color={style.textColor}
           fontFamily={fontFamily}
-          fontSize={"sm"}
+          fontSize={"xs"}
           style={{ fontWeight: FontWeight }}
           paddingLeft={Img && type === "standard" ? "10%" : 0}
           // Remover justifyContent e alignItems se estiverem dentro do Text

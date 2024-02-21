@@ -1,8 +1,9 @@
 import { View } from "react-native";
 import type { Meta, StoryObj } from "@storybook/react";
-import { MyButton, ButtonProps } from "./Button";
+import { MyButton } from "./Button";
+import { ButtonProps } from "../type";
 import React from "react";
-import ThemeDecorator from "../../../.storybook/decorator/ThemeDecorator";
+import ThemeDecorator from "../../../../.storybook/decorator/ThemeDecorator";
 
 const MyButtonMeta: Meta<ButtonProps> = {
   title: "MyButton",
@@ -30,8 +31,22 @@ const MyButtonMeta: Meta<ButtonProps> = {
       defaultValue: "standard",
       description: "Type of the component",
     },
-    url: {
-      type: "string",
+    fontWeight: {
+      control: "select",
+      options: [
+        "bold",
+        "100",
+        "200",
+        "300",
+        "400",
+        "500",
+        "600",
+        "700",
+        "800",
+        "900",
+        "normal",
+      ],
+      defaultValue: "400",
     },
   },
 

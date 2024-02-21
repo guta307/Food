@@ -1,15 +1,20 @@
-import { Box, Text } from "native-base";
+import { Box, Text, IBoxProps } from "native-base";
 import React, { ReactNode } from "react";
 
 export type InlineTextProps = {
   color?: "gray.700" | "white";
   size?: "sm" | "md";
   children: ReactNode;
-};
+} & IBoxProps;
 
-export const InlineText = ({ color = "white", size = "md", children }) => {
+export const InlineText = ({
+  color = "white",
+  size = "md",
+  children,
+  ...rest
+}) => {
   return (
-    <Box alignItems="center" flexDirection={"row"}>
+    <Box {...rest} alignItems="center" flexDirection={"row"}>
       <Box
         flexGrow={1}
         height="1px"
