@@ -1,0 +1,103 @@
+{
+  "restaurants": [
+    {
+      "id": 1,
+      "name": "Spicy Delight",
+      "categories": ["Indian", "Spicy", "Curry"],
+      "deliveryTime": "30-45 mins",
+      "deliveryCost": "Free delivery",
+      "imageUri": "https://static.toiimg.com/thumb/msid-101282760,width-1280,height-720,resizemode-4/101282760.jpg",
+      "iconUri": "https://www.shopping3americas.com.br/wp-content/uploads/sites/13/2023/01/mcdonalds-logo-bg-red-300x300.png"
+    },
+    {
+      "id": 2,
+      "name": "Urban Grill",
+      "categories": ["BBQ", "American", "Grill"],
+      "deliveryTime": "20-30 mins",
+      "deliveryCost": "$2.99 delivery",
+      "imageUri": "https://media.timeout.com/images/106001846/750/422/image.jpg",
+      "iconUri": "https://portalbelohorizonte.com.br/sites/default/files/arquivos/comer-e-beber/2022-07/logoface-1_19.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Sushi Palace",
+      "categories": ["Japanese", "Sushi", "Seafood"],
+      "deliveryTime": "15-25 mins",
+      "deliveryCost": "Free delivery",
+      "imageUri": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTF7NFJTPM7o2Uk8dii2hCcVqjAT5Pgi7K8xA&s",
+      "iconUri": "https://i.pinimg.com/originals/aa/92/89/aa9289de1ed2865bccd7c7457f246482.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Celebrity Bites",
+      "categories": ["Fast Food", "Burgers", "Fries"],
+      "deliveryTime": "10-15 mins",
+      "deliveryCost": "$1.99 delivery",
+      "imageUri": "https://www.tastingtable.com/img/gallery/17-celebrity-chefs-and-their-favorite-fast-food-restaurants/l-intro-1674674335.jpg",
+      "iconUri": "https://media-cdn.grubhub.com/image/upload/d_search:browse-images:default.jpg/w_300,q_100,fl_lossy,dpr_2.0,c_fit,f_auto,h_300/woxpyea9ea2gizltya9v"
+    }
+  ],
+
+  "dishes": [
+    {
+      "id": 1,
+      "restaurantId": 1,
+      "name": "Chicken Tikka Masala",
+      "ingredients": "Chicken, Tomato sauce, Spices",
+      "value": 12.99,
+      "categories": ["popular", "combo"],
+      "imageUri": "https://www.hojetemfrango.com.br/wp-content/uploads/2019/01/shutterstock_610126394.jpg",
+      "description": "Marinate the chicken with spices and yogurt overnight. Grill the chicken until golden brown. Simmer in a creamy tomato sauce for a rich flavor."
+    },
+    {
+      "id": 2,
+      "restaurantId": 2,
+      "name": "BBQ Ribs",
+      "ingredients": "Pork ribs, BBQ sauce, Honey",
+      "value": 15.99,
+      "categories": ["popular", "new"],
+      "imageUri": "https://www.allrecipes.com/thmb/IWVelWahUb2gQxixWJC2N-HXp0k=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/22469-Barbecue-Ribs-ddmfs-2x1-210-e799db142f594b00bb317bb357d0971c.jpg",
+      "description": "Slow-cook the pork ribs until tender. Glaze with BBQ sauce and honey. Broil until the sauce is caramelized and sticky."
+    },
+    {
+      "id": 3,
+      "restaurantId": 3,
+      "name": "California Roll",
+      "ingredients": "Crab, Cucumber...",
+      "value": 9.99,
+      "categories": ["popular", "desert"],
+      "imageUri": "https://www.justonecookbook.com/wp-content/uploads/2022/12/California-Roll-6126-I-2.jpg",
+      "description": "Prepare sushi rice seasoned with vinegar mixture. Roll with crab meat, cucumber, and avocado. Top with sesame seeds for extra flavor."
+    },
+    {
+      "id": 4,
+      "restaurantId": 4,
+      "name": "Cheeseburger",
+      "ingredients": "Beef patty, Cheese, Lettuce",
+      "value": 8.99,
+      "categories": ["popular", "combo"],
+      "imageUri": "https://www.sargento.com/assets/Uploads/Recipe/Image/burger_0.jpg",
+      "description": "Grill the beef patty to your liking. Place a slice of cheese on the patty until melted. Serve on a toasted bun with lettuce and your choice of sauce."
+    },
+    {
+      "id": 5,
+      "restaurantId": 1,
+      "name": "Paneer Butter Masala",
+      "ingredients": "Paneer, Butter sauce, Cream",
+      "value": 11.99,
+      "categories": ["combo", "new"],
+      "imageUri": "https://www.yummytummyaarthi.com/wp-content/uploads/2021/12/1.jpg",
+      "description": "Cube the paneer and fry until golden. Simmer in a rich butter and tomato sauce. Finish with cream for a decadent dish."
+    },
+    {
+      "id": 6,
+      "restaurantId": 3,
+      "name": "Sashimi Deluxe",
+      "ingredients": "Assorted fresh fish...",
+      "value": 18.99,
+      "categories": ["desert", "new"],
+      "imageUri": "https://images.tcdn.com.br/img/img_prod/842178/salmao_fresco_fatiado_tipo_sashimi_77_1_20200903170409.jpg",
+      "description": "Select the freshest fish. Slice thinly for delicate texture. Serve with soy sauce, wasabi, and pickled ginger."
+    }
+  ]
+}

@@ -16,7 +16,7 @@ import { createUser } from "../../services/SignUp/create";
 import { handleChange, handleError } from "../../utils/inputHandle";
 import { useDispatch } from "react-redux";
 import { Subscribe } from "../../Redux/reducers/user";
-
+import React from "react";
 const SignUp = ({ navigation }) => {
   const [formValues, setFormValues] = useState({
     email: "",

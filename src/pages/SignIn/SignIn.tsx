@@ -12,14 +12,15 @@ import FacebookIcon from "../../assets/Images/components/Icon/Facebook.svg";
 import GoogleIcon from "../../assets/Images/components/Icon/Google.svg";
 
 import { TextItem } from "../../stories/TextItem/TextItem";
-import { ReturnButton } from "../../stories/Button/return/ReturnButton";
-import { useState } from "react";
+import { ActionButton } from "../../stories/Button/action/ActionButton";
+import { useEffect, useState } from "react";
 import { handleChange, handleError } from "../../utils/inputHandle";
 import { loginUser as loginService } from "../../services/Login/login";
 
 import { useDispatch } from "react-redux";
 import { logIn } from "../../Redux/reducers/user";
-
+import React from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
 const SignIn = ({ navigation }) => {
   const [formValues, setFormValues] = useState({
     email: "",
@@ -54,7 +55,7 @@ const SignIn = ({ navigation }) => {
 
       if (result.status) {
         const user = result.response.data;
-        dispatch(logIn({ name: user.name as string }));
+        dispatch(logIn({ name: user.name as string, email: formValues.email }));
         navigation.navigate("Loading");
       } else {
         console.log(result);
@@ -82,114 +83,126 @@ const SignIn = ({ navigation }) => {
     }
   };
 
+  useEffect(() => {
+    setFormValues({
+      email: "",
+      passwordHash: "",
+      name: "",
+    });
+  }, []);
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={{ flex: 1, position: "relative" }}
     >
-      <ScrollView
-        flex={1}
-        paddingLeft={WidthScreen * 0.0693}
-        paddingRight={WidthScreen * 0.064}
-        bg={"#FFFFFF"}
-      >
-        <ReturnButton
-          onTouchStart={() => navigation.goBack()}
-          mt={HeightScreen * 0.0455}
-        />
-
-        <Title
-          fontSize={"3xl"}
-          mt={HeightScreen * 0.1294}
-          mb={HeightScreen * 0.0382}
+      <SafeAreaView style={{ flex: 1, position: "relative" }}>
+        <ScrollView
+          flex={1}
+          paddingLeft={WidthScreen * 0.0693}
+          paddingRight={WidthScreen * 0.064}
+          bg={"#FFFFFF"}
         >
-          Sign In
-        </Title>
+          <ActionButton
+            onTouchStart={() => navigation.goBack()}
+            mt={HeightScreen * 0.0455}
+          />
 
-        <InputField
-          onChange={(value) =>
-            handleChange("email", value, setFormValues, setErrors)
-          }
-          placeholder="Your email or phone"
-          label="E-mail"
-          mb={HeightScreen * 0.0357}
-          errorMessage={errors.find((error) => error.type === "email")?.message}
-        />
-
-        <InputField
-          onChange={(value) =>
-            handleChange("passwordHash", value, setFormValues, setErrors)
-          }
-          label="Password"
-          placeholder="Password"
-          type="password"
-          mb={HeightScreen * 0.0406}
-          errorMessage={
-            errors.find((error) => error.type === "passwordHash")?.message
-          }
-        />
-
-        <Box w={"full"} alignItems={"center"} mb={HeightScreen * 0.0406}>
-          <MyButton
-            type="action"
-            h={HeightScreen * 0.0738}
-            width={WidthScreen * 0.6613}
-            shadow={"4"}
-            fontFamily={"Sofiapro-Bold"}
-            FontWeight={"600"}
-            onTouchStart={submit}
+          <Title
+            fontSize={"3xl"}
+            mt={HeightScreen * 0.1294}
+            mb={HeightScreen * 0.0382}
           >
-            {" "}
-            LOGIN
-          </MyButton>
-        </Box>
+            Sign In
+          </Title>
 
-        <Box
-          mb={HeightScreen * 0.0665}
-          width={"full"}
-          flexDir={"row"}
-          justifyContent={"center"}
-        >
-          <TextItem color={"gray.700"} size={"sm"}>
-            Dont have an account?{" "}
-          </TextItem>
-          <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-            <TextItem color={"orange.900"} size={"md"}>
-              Sign Up{" "}
+          <InputField
+            onChange={(value) =>
+              handleChange("email", value, setFormValues, setErrors)
+            }
+            placeholder="Your email or phone"
+            label="E-mail"
+            mb={HeightScreen * 0.0357}
+            errorMessage={
+              errors.find((error) => error.type === "email")?.message
+            }
+          />
+
+          <InputField
+            onChange={(value) =>
+              handleChange("passwordHash", value, setFormValues, setErrors)
+            }
+            label="Password"
+            placeholder="Password"
+            type="password"
+            mb={HeightScreen * 0.0406}
+            errorMessage={
+              errors.find((error) => error.type === "passwordHash")?.message
+            }
+          />
+
+          <Box w={"full"} alignItems={"center"} mb={HeightScreen * 0.0406}>
+            <MyButton
+              type="action"
+              h={HeightScreen * 0.0738}
+              width={WidthScreen * 0.6613}
+              shadow={"4"}
+              fontFamily={"Sofiapro-Bold"}
+              FontWeight={"600"}
+              onTouchStart={submit}
+            >
+              {" "}
+              LOGIN
+            </MyButton>
+          </Box>
+
+          <Box
+            mb={HeightScreen * 0.0665}
+            width={"full"}
+            flexDir={"row"}
+            justifyContent={"center"}
+          >
+            <TextItem color={"gray.700"} size={"sm"}>
+              Dont have an account?{" "}
             </TextItem>
-          </TouchableOpacity>
-        </Box>
+            <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
+              <TextItem color={"orange.900"} size={"md"}>
+                Sign Up{" "}
+              </TextItem>
+            </TouchableOpacity>
+          </Box>
 
-        <InlineText color="gray.700" mb={HeightScreen * 0.0293}>
-          sign up with
-        </InlineText>
-        <Box
-          mb={WidthScreen * 0.0693}
-          width={"full"}
-          flexDir={"row"}
-          justifyContent={"space-between"}
-        >
-          <MyButton
-            Img={FacebookIcon}
-            h={HeightScreen * 0.0665}
-            shadow={"1"}
-            width={WidthScreen * 0.373}
-            FontWeight={"600"}
+          <InlineText color="gray.700" mb={HeightScreen * 0.0293}>
+            sign up with
+          </InlineText>
+          <Box
+            mb={WidthScreen * 0.0693}
+            width={"full"}
+            flexDir={"row"}
+            justifyContent={"space-between"}
           >
-            FACEBOOK
-          </MyButton>
+            <MyButton
+              Img={FacebookIcon}
+              h={HeightScreen * 0.0665}
+              shadow={"1"}
+              width={WidthScreen * 0.373}
+              FontWeight={"600"}
+            >
+              FACEBOOK
+            </MyButton>
 
-          <MyButton
-            Img={GoogleIcon}
-            h={HeightScreen * 0.0665}
-            shadow={"1"}
-            width={WidthScreen * 0.373}
-            FontWeight={"600"}
-          >
-            GOOGLE
-          </MyButton>
-        </Box>
-      </ScrollView>
+            <MyButton
+              Img={GoogleIcon}
+              h={HeightScreen * 0.0665}
+              shadow={"1"}
+              width={WidthScreen * 0.373}
+              FontWeight={"600"}
+            >
+              GOOGLE
+            </MyButton>
+          </Box>
+        </ScrollView>
+      </SafeAreaView>
     </KeyboardAvoidingView>
   );
 };

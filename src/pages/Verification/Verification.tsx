@@ -6,10 +6,11 @@ import { Title } from "../../stories/Title/Title";
 import { WidthScreen, HeightScreen } from "../../utils/Screensize";
 import { TextItem } from "../../stories/TextItem/TextItem";
 import { CodeBox } from "../../stories/CodeBox/CodeBox";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { validateUser } from "../../services/SignUp/validate";
 import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/store";
+import React from "react";
 const Verification = ({ navigation }) => {
   const [codeValues, setCodeValues] = useState({
     box1: "",
@@ -17,6 +18,17 @@ const Verification = ({ navigation }) => {
     box3: "",
     box4: "",
   });
+
+  const boxRefs = {
+    box1: useRef(null),
+    box2: useRef(null),
+    box3: useRef(null),
+    box4: useRef(null),
+  };
+
+  const focusNextBox = useCallback((nextBoxId) => {
+    boxRefs[nextBoxId]?.current?.focus();
+  }, []);
 
   const [error, setError] = useState(null);
   const user = useSelector((state: RootState) => state.user.userLogged);
@@ -93,9 +105,19 @@ const Verification = ({ navigation }) => {
             alignItems={"center"}
             justifyContent={"space-evenly"}
           >
-            {Object.keys(codeValues).map((id) => (
-              <CodeBox key={id} id={id} onChange={handleChange} />
-            ))}
+            {Object.entries(boxRefs).map(([id, ref], index, array) => {
+              const nextBoxId = array[index + 1]?.[0];
+              return (
+                <CodeBox
+                  key={id}
+                  ref={ref}
+                  id={id}
+                  onChange={handleChange}
+                  onFocusNextBox={focusNextBox}
+                  nextFocusId={nextBoxId}
+                />
+              );
+            })}
           </Box>
           {error && (
             <FormControl.ErrorMessage alignItems={"center"}>

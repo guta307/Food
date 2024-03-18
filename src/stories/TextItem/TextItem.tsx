@@ -12,13 +12,15 @@ export const TextItem = ({
   size = "md",
   children,
   textAlign = "center",
+  fontFamily = "Sofiapro-Regular",
   ...rest
 }: TextItemProps) => {
   return (
     <Text
       color={color}
       fontSize={size}
-      fontFamily={"Sofiapro-Regular"}
+      fontFamily={fontFamily}
+      flexDir={"row"}
       textAlign={textAlign}
       {...rest}
     >

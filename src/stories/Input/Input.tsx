@@ -4,11 +4,14 @@ import EyeOpen from "../../../src/assets/Images/components/Inputs/eyeOpen.svg";
 import EyeClosed from "../../../src/assets/Images/components/Inputs/EyeClosed.svg";
 
 import { HeightScreen, WidthScreen } from "../../utils/Screensize";
+import { Pressable } from "react-native";
 export type inputProps = {
   type?: "text" | "password";
   placeholder?: string;
   label?: string;
   onChange?: (text: string) => void;
+  defaultValue?: string;
+  disabled?: boolean;
   errorMessage?: string; // Adicionado
 } & IFormControlProps;
 
@@ -16,8 +19,11 @@ export const InputField = ({
   type = "text",
   placeholder = "",
   label,
+  width = WidthScreen * 0.8667,
   onChange = () => {},
   errorMessage,
+  disabled = false,
+  defaultValue = "",
   ...rest
 }: inputProps) => {
   const [Show, setShow] = useState(false);
@@ -38,7 +44,7 @@ export const InputField = ({
       <FormControl
         {...rest}
         flexDir={"column"}
-        width={WidthScreen * 0.8667}
+        width={width}
         isInvalid={!!errorMessage}
       >
         {label && (
@@ -52,10 +58,13 @@ export const InputField = ({
           onFocus={() => {
             Error && setError(null);
           }}
+          defaultValue={defaultValue}
           shadow="2"
+          isDisabled={disabled}
           width={"100%"}
           height={HeightScreen * 0.08}
           rounded={"10px"}
+          fontFamily={"Sofiapro-Regular"}
           placeholder={placeholder}
           borderColor={"#EEE"}
           borderWidth={"1px"}
@@ -67,22 +76,40 @@ export const InputField = ({
             backgroundColor: "white",
             borderColor: "orange.900",
             borderWidth: "1px",
+            fontFamily: "Sofiapro-Bold",
+            fontWeight: "bold",
           }}
           InputRightElement={
             type === "password" ? (
               <Box mr={2} h="full" justifyContent="center">
                 {!Show ? (
-                  <EyeOpen
-                    onTouchStart={passowordInteraction}
-                    width={WidthScreen * 0.0453}
-                    height={HeightScreen * 0.0148}
-                  />
+                  <Pressable onTouchStart={passowordInteraction}>
+                    <Box
+                      width={WidthScreen * 0.09}
+                      justifyContent={"center"}
+                      alignItems={"center"}
+                      h={"full"}
+                    >
+                      <EyeOpen
+                        width={WidthScreen * 0.0453}
+                        height={HeightScreen * 0.0148}
+                      />
+                    </Box>
+                  </Pressable>
                 ) : (
-                  <EyeClosed
-                    onTouchStart={passowordInteraction}
-                    width={WidthScreen * 0.0453}
-                    height={HeightScreen * 0.0148}
-                  />
+                  <Pressable onTouchStart={passowordInteraction}>
+                    <Box
+                      width={WidthScreen * 0.09}
+                      justifyContent={"center"}
+                      alignItems={"center"}
+                      h={"full"}
+                    >
+                      <EyeClosed
+                        width={WidthScreen * 0.0453}
+                        height={HeightScreen * 0.0148}
+                      />
+                    </Box>
+                  </Pressable>
                 )}
               </Box>
             ) : (

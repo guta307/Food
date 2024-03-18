@@ -9,7 +9,8 @@
     "web": "expo start --web",
     "storybook-generate": "sb-rn-get-stories",
     "storybook-watch": "sb-rn-watcher",
-    "storybook:android": "export STORYBOOK_ENABLED=true && sb-rn-get-stories && expo start --android"
+    "storybook:android": "export STORYBOOK_ENABLED=true && sb-rn-get-stories && expo start --android",
+    "storybook": "export STORYBOOK_ENABLED=true && sb-rn-get-stories && expo start"
   },
   "dependencies": {
     "@expo/config-plugins": "^7.8.4",
@@ -17,6 +18,7 @@
     "@react-navigation/native-stack": "^6.9.17",
     "@redux-devtools/extension": "^3.3.0",
     "@reduxjs/toolkit": "^2.2.1",
+    "@storybook/theming": "^7.6.17",
     "axios": "^1.6.7",
     "babel-plugin-inline-import": "^3.0.0",
     "expo": "^50.0.6",
@@ -37,7 +39,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
-    "@react-native-async-storage/async-storage": "^1.21.0",
+    "@react-native-async-storage/async-storage": "^1.22.3",
     "@react-native-community/datetimepicker": "^7.6.2",
     "@react-native-community/slider": "^4.5.0",
     "@storybook/addon-ondevice-actions": "^7.6.13",

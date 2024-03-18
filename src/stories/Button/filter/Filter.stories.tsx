@@ -1,13 +1,14 @@
 import { View } from "react-native";
 import type { Meta, StoryObj } from "@storybook/react";
-import { ReturnButton } from "./ReturnButton";
-import { IBoxProps } from "native-base";
+import { FilterButton } from "./filter";
+
 import React from "react";
 import ThemeDecorator from "../../../../.storybook/decorator/ThemeDecorator";
+import { IBoxProps } from "native-base";
 
-const ReturnButtonMeta: Meta<IBoxProps> = {
-  title: "ReturnButton",
-  component: ReturnButton,
+const FilterButtonMeta: Meta<IBoxProps> = {
+  title: "FilterButton",
+  component: FilterButton,
   argTypes: {},
 
   args: {},
@@ -15,7 +16,11 @@ const ReturnButtonMeta: Meta<IBoxProps> = {
     (Story) => (
       <ThemeDecorator>
         <View
-          style={{ alignItems: "center", justifyContent: "center", flex: 1 }}
+          style={{
+            alignItems: "center",
+            justifyContent: "center",
+            flex: 1,
+          }}
         >
           <Story />
         </View>
@@ -24,6 +29,6 @@ const ReturnButtonMeta: Meta<IBoxProps> = {
   ],
 };
 
-export default ReturnButtonMeta;
+export default FilterButtonMeta;
 
 export const Basic: StoryObj<IBoxProps> = {};

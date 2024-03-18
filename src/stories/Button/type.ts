@@ -5,7 +5,8 @@ export type ButtonProps = {
   children: ReactNode;
   shadow?: "0" | "1" | "2" | "3" | "4" | "5" | null;
   type?: "standard" | "action" | "login";
-  Img?: React.ElementType; // Definindo url como um SvgProps para lidar com SVG
+  Img?: React.ElementType | React.ReactNode; // Definindo url como um SvgProps para lidar com SVG
+  TextMargin?: number;
   FontWeight?:
     | "bold"
     | "100"
